@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="./styles.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Mali:wght@500&family=Pangolin&display=swap" rel="stylesheet">
+	<script type="text/javascript" src="./index.js" defer></script>
+	<title>Document</title>
+</head>
+<body>
+	<div id="container">
+		<section id="toggle-section">
+			<div id="clock-interface-type" class="toggles">
+				<a href="#" id="toggle--digital" class="toggle--options">Digital</a>
+				<a href="#" id="toggle--analog" class="toggle--options">Analog</a>
+			</div>
+			<div id="hours-format" class="toggles">
+				<a href="#" class="toggle--twelve toggle--options">12H</a>
+				<a href="#" class="toggle--twentyFour toggle--options">24H</a>
+			</div>
+		</section>
+
+		<section id="clock-section">
+			<div id="digital-clock">
+				<p id="digital-clock--hours" class="after:content-[':'] after:mx-2">--</p>
+				<p id="digital-clock--minute" class="after:content-[':'] after:mx-2">--</p>
+				<p id="digital-clock--seconds">--</p>
+				<p id="digital-clock--hours-format">--</p>
+			</div>
+
+			<div id="analog-clock">
+				<div id="analog-clock-outside"></div>
+			</div>
+		</section>
+	</div>
+</body>
+</html>

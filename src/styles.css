@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{	
+	html{
+		font-family: 'Pangolin', cursive;
+	}
+}
+
+#container{
+	@apply relative w-screen h-screen text-xl uppercase;
+}
+
+#toggle-section{
+	@apply absolute top-[10%] left-1/2 -translate-x-1/2 -translate-y-[10%]
+}
+
+.toggles{
+	@apply rounded border border-black flex justify-between p-3
+}
+
+#hours-format{
+	@apply mt-4 w-3/5 mx-auto
+}
+
+.toggle--options{
+	@apply font-mali odd:mr-4
+}
+
+#clock-section{
+	@apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+}
+
+#digital-clock{
+	@apply flex
+}
+
+#digital-clock>p{
+	@apply text-6xl
+}
+
+#digital-clock--hours-format{
+	@apply ml-4
+}

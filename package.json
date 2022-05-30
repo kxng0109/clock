@@ -1,0 +1,19 @@
+{
+  "name": "clock",
+  "version": "1.0.0",
+  "description": "A basic clock",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm:build-css\" \"npm:live-server\"",
+    "build-css": "tailwindcss -i src/styles.css -o public/styles.css --watch",
+    "live-server": "browser-sync start --server --files '**/*.css, **/*.html, **/*.js, !node_modules/**/*, !.git/**/*' --directory --port 7777 --browser \"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.27.10",
+    "concurrently": "^7.2.1",
+    "tailwindcss": "^3.0.24"
+  }
+}
