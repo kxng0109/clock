@@ -8,31 +8,35 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Mali:wght@500&family=Pangolin&display=swap" rel="stylesheet">
 	<script type="text/javascript" src="./index.js" defer></script>
-	<title>Document</title>
+	<title>Clock</title>
 </head>
 <body>
-	<div id="container">
+	<div id="container" class="bg-gradient-to-br evening dark:text-white">
 		<section id="toggle-section">
 			<div id="clock-interface-type" class="toggles">
-				<a href="#" id="toggle--digital" class="toggle--options">Digital</a>
+				<a href="#" id="toggle--digital" class="toggle--options selected">Digital</a>
 				<a href="#" id="toggle--analog" class="toggle--options">Analog</a>
 			</div>
 			<div id="hours-format" class="toggles">
-				<a href="#" class="toggle--twelve toggle--options">12H</a>
+				<a href="#" class="toggle--twelve toggle--options selected">12H</a>
 				<a href="#" class="toggle--twentyFour toggle--options">24H</a>
 			</div>
 		</section>
 
 		<section id="clock-section">
-			<div id="digital-clock">
+			<div id="digital-clock" class="hidden">
 				<p id="digital-clock--hours" class="after:content-[':'] after:mx-2">--</p>
 				<p id="digital-clock--minute" class="after:content-[':'] after:mx-2">--</p>
 				<p id="digital-clock--seconds">--</p>
-				<p id="digital-clock--hours-format">--</p>
+				<p id="digital-clock--hours-format" class="hidden"></p>
 			</div>
 
 			<div id="analog-clock">
-				<div id="analog-clock-outside"></div>
+				<div id="analog-clock-outside">
+					<div id="analog--hours" class="analog--hands"></div>
+					<div id="analog--minute" class="analog--hands"></div>
+					<div id="analog--seconds" class="analog--hands"></div>
+				</div>
 			</div>
 		</section>
 	</div>

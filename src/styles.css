@@ -5,6 +5,7 @@
 @layer base{	
 	html{
 		font-family: 'Pangolin', cursive;
+		transition: all 0.5s linear;
 	}
 }
 
@@ -17,7 +18,7 @@
 }
 
 .toggles{
-	@apply rounded border border-black flex justify-between p-3
+	@apply rounded border border-black flex justify-between dark:border-white;
 }
 
 #hours-format{
@@ -25,21 +26,34 @@
 }
 
 .toggle--options{
-	@apply font-mali odd:mr-4
+	@apply font-mali p-3 py-2
 }
 
 #clock-section{
 	@apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
 }
 
-#digital-clock{
+/*#digital-clock{
 	@apply flex
-}
+}*/
 
 #digital-clock>p{
-	@apply text-6xl
+	@apply text-5xl
 }
 
 #digital-clock--hours-format{
 	@apply ml-4
+}
+
+.selected{
+	@apply bg-black dark:bg-white dark:text-black text-white
+}
+
+#analog-clock-outside{
+	@apply p-[35vw] relative border border-black;
+	border-radius: 50%;
+}
+
+.analog--hands{
+	@apply rounded absolute /*top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2*/ bg-black w-[34vw] h-2 /*rotate-90*/
 }
