@@ -515,6 +515,10 @@ html{
   display: none;
 }
 
+.transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .bg-gradient-to-br {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
 }
@@ -606,9 +610,9 @@ html{
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-/*#digital-clock{
-	@apply flex
-}*/
+#digital-clock {
+  display: flex;
+}
 
 #digital-clock>p {
   font-size: 3rem;
@@ -642,13 +646,50 @@ html{
   border-radius: 50%;
 }
 
-.analog--hands {
+.analog-clock--hands {
   position: absolute;
-  height: 0.5rem;
-  width: 34vw;
+  bottom: 50%;
+  left: 50%;
+  height: 32vw;
+  width: 0.5rem;
+  transform-origin: 0% 100%;
+  --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   border-radius: 0.25rem;
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+#analog-clock--minute {
+  z-index: 1;
+  width: 0.3rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 157 81 / var(--tw-bg-opacity));
+}
+
+#analog-clock--hours {
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 101 67 / var(--tw-bg-opacity));
+  height: min(10rem, 17vw);
+}
+
+#analog-clock--seconds {
+  height: 6rem;
+  width: 0.25rem;
+}
+
+#analog-clock--dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  --tw-translate-x: -50%;
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+  padding: 7px;
+  border-radius: 50%;
 }
 
 .after\:mx-2::after {

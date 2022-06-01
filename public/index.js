@@ -6,14 +6,34 @@ const toggleAnalog = document.querySelector('#toggle--analog');
 const hoursFormat = document.querySelector('#hours-format');
 const toggleTwelveHours = document.querySelector('.toggle--twelve');
 const toggleTwentyFour = document.querySelector('.toggle--twentyFour');
+const digitalClock = document.querySelector('#digital-clock');
+const analogClock = document.querySelector('#analog-clock');
 const digitalClockHours = document.querySelector('#digital-clock--hours');
 const digitalClockMinute = document.querySelector('#digital-clock--minute');
 const digitalClockSecond = document.querySelector('#digital-clock--seconds');
 const digitalClockHoursFormat = document.querySelector('#digital-clock--hours-format');
+const analogClockHours = document.querySelector('#analog-clock--hours');
+const analogClockMinute = document.querySelector('#analog-clock--minute');
+const analogClockSecond = document.querySelector('#analog-clock--seconds');
+const translateX = 'translateX(-50%)'
 let date = new Date();
 let isToggled = true;
 let addZero = time => time <= 9 ? `0${time}` : time;
 toggleTwelveHours.onclick = () => isToggled = !isToggled
+
+const hourConverter = (hour, digitalOrAnalog = 'digital') =>{
+	switch (true) {
+		case digitalOrAnalog == 'digital' && digitalClockHoursFormat.textContent === 'PM':
+			return digitalClockHours.textContent = (hour - 12);
+		break;
+		case digitalOrAnalog == 'digital' && digitalClockHoursFormat.textContent === 'AM':
+			return digitalClockHours.textContent = hour;
+		case digitalOrAnalog == 'analog':
+			return hour > 12 ? hour - 12 : hour;
+		break;
+	}
+}
+
 
 let toggler = (changeElement, otherElement) =>{
 	changeElement.classList.add('selected');
@@ -23,11 +43,15 @@ let toggler = (changeElement, otherElement) =>{
 toggleDigital.onclick = () => {
 	toggler(toggleDigital, toggleAnalog);
 	hoursFormat.style.display = 'flex';
+	digitalClock.style.display = 'flex';
+	analogClock.style.display = 'none';
 }
 
 toggleAnalog.onclick = () => {
 	toggler(toggleAnalog, toggleDigital);
 	hoursFormat.style.display = 'none';
+	digitalClock.style.display = 'none';
+	analogClock.style.display = 'flex';
 }
 
 toggleTwelveHours.onclick = () => {
@@ -61,27 +85,39 @@ setInterval(() =>{
 	digitalClockMinute.textContent = addZero(date.getMinutes());
 	digitalClockSecond.textContent = addZero(date.getSeconds());
 	digitalClockHoursFormat.textContent = addZero(date.getHours()) >= 12 ? 'PM' : 'AM';
+
 	switch (true) {
-		//If 12 hours is selected and it is afternoon/evening
-		case isToggled && digitalClockHoursFormat.textContent === 'PM':
-			digitalClockHours.textContent = (addZero(date.getHours()) - 12);
-			digitalClockHoursFormat.classList.remove('hidden');
-			themeSelector(8)
+		case toggleDigital.classList.contains('selected'):
+			switch (true) {
+				//If 12 hours is selected and it is afternoon/evening
+				case isToggled && digitalClockHoursFormat.textContent === 'PM':
+					// digitalClockHours.textContent = (addZero(date.getHours()) - 12);
+					hourConverter(addZero(date.getHours()))
+					digitalClockHoursFormat.classList.remove('hidden');
+					themeSelector(8)
+				break;
+				//If 12 hours is selected and it is morning
+				case isToggled && digitalClockHoursFormat.textContent === 'AM':			
+					digitalClockHours.textContent = addZero(date.getHours());
+					digitalClockHoursFormat.classList.remove('hidden');
+					document.documentElement.classList.remove('dark');
+				break;
+				default:			
+					digitalClockHours.textContent = addZero(date.getHours());
+					digitalClockHoursFormat.classList.add('hidden');
+					themeSelector(20)
+				break;
+			}
 		break;
-		//If 12 hours is selected and it is morning
-		case isToggled && digitalClockHoursFormat.textContent === 'AM':			
-			digitalClockHours.textContent = addZero(date.getHours());
-			digitalClockHoursFormat.classList.remove('hidden');
-			document.documentElement.classList.remove('dark');
-		break;
-		default:			
-			digitalClockHours.textContent = addZero(date.getHours());
-			digitalClockHoursFormat.classList.add('hidden');
-			themeSelector(20)
+
+		case toggleAnalog.classList.contains('selected'):
+			analogClockSecond.style.transform = `rotate(${addZero(date.getSeconds()) * 6}deg) ${translateX}`;
+			analogClockMinute.style.transform = `rotate(${addZero(date.getMinutes()) * 6}deg) ${translateX}`;
+			analogClockHours.style.transform = `rotate(${hourConverter(date.getHours()) * 30 + (addZero(date.getMinutes()) * 0.5)}deg) ${translateX}`;
 		break;
 	}
 }, 1000)
-let temp = 8;
+let temp = 20;
 
 switch (true) {
 	case temp >= 20:

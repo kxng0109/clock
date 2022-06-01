@@ -33,9 +33,9 @@
 	@apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
 }
 
-/*#digital-clock{
+#digital-clock{
 	@apply flex
-}*/
+}
 
 #digital-clock>p{
 	@apply text-5xl
@@ -54,6 +54,25 @@
 	border-radius: 50%;
 }
 
-.analog--hands{
-	@apply rounded absolute /*top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2*/ bg-black w-[34vw] h-2 /*rotate-90*/
+.analog-clock--hands{
+	@apply rounded absolute bottom-1/2 left-1/2 -translate-x-1/2 bg-black h-[32vw] w-2 origin-[0%_100%];
+}
+
+#analog-clock--minute{
+	@apply bg-[#F09D51] z-1 w-[0.3rem]
+}
+
+#analog-clock--hours{
+	@apply bg-[#F06543];
+	height: min(10rem, 17vw);
+}
+
+#analog-clock--seconds{
+	@apply h-24 w-1
+}
+
+#analog-clock--dot{
+	@apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black z-2;
+	padding: 7px;
+	border-radius: 50%;
 }
