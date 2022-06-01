@@ -1,0 +1,1 @@
+Just a simple clock application made using Javascript.

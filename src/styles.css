@@ -50,7 +50,7 @@
 }
 
 #analog-clock-outside{
-	@apply p-[35vw] relative border border-black sm:p-44 lg:p-[20vw] shadow-lg shadow-slate-400;
+	@apply p-[31vw] relative border border-black sm:p-44 lg:p-52 shadow-lg shadow-slate-400;
 	border-radius: 50%;
 }
 
@@ -79,16 +79,16 @@
 }
 
 #analog-clock--minute{
-	@apply bg-[#F09D51] z-1 w-[0.4rem] h-[28vw] sm:h-32 lg:h-[16vw] opacity-75
+	@apply bg-[#F09D51] z-1 w-[0.4rem] h-2/5 opacity-75
 }
 
 #analog-clock--hours{
-	@apply bg-[#F06543] h-[12vw] sm:h-20 lg:h-[7vw];
+	@apply bg-[#F06543] h-1/4;
 	/*height: min(10rem, 13vw);*/
 }
 
 #analog-clock--seconds{
-	@apply h-[22vw] w-1 sm:h-32
+	@apply w-1 h-1/3
 }
 
 #analog-clock--dot{
