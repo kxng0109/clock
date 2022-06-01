@@ -22,11 +22,11 @@
 }
 
 #hours-format{
-	@apply mt-4 w-3/5 mx-auto
+	@apply mt-4 w-3/5 mx-auto sm:mt-6
 }
 
 .toggle--options{
-	@apply font-mali p-3 py-2
+	@apply font-mali p-3 py-2 md:p-5 md:py-3;
 }
 
 #clock-section{
@@ -38,7 +38,7 @@
 }
 
 #digital-clock>p{
-	@apply text-5xl
+	@apply text-5xl md:text-6xl;
 }
 
 #digital-clock--hours-format{
@@ -50,29 +50,59 @@
 }
 
 #analog-clock-outside{
-	@apply p-[35vw] relative border border-black;
+	@apply p-[35vw] relative border border-black sm:p-44 lg:p-[20vw] shadow-lg shadow-slate-400;
 	border-radius: 50%;
 }
 
+.analog-clock--markings{
+	@apply w-1 absolute bg-red-500 rounded
+}
+
+#acm1, #acm3{
+	@apply top-0 h-4 -translate-x-1/2 
+}
+
+#acm2, #acm4{
+	@apply right-0 w-4 h-1 -translate-y-1/2 
+}
+
+#acm3{
+	@apply bottom-0 top-[unset]
+}
+
+#acm4{
+	@apply left-0 right-[unset]
+}
+
 .analog-clock--hands{
-	@apply rounded absolute bottom-1/2 left-1/2 -translate-x-1/2 bg-black h-[32vw] w-2 origin-[0%_100%];
+	@apply rounded absolute bottom-1/2 left-1/2 -translate-x-1/2 bg-black w-2 origin-[0%_100%] ;
 }
 
 #analog-clock--minute{
-	@apply bg-[#F09D51] z-1 w-[0.3rem]
+	@apply bg-[#F09D51] z-1 w-[0.4rem] h-[28vw] sm:h-32 lg:h-[16vw] opacity-75
 }
 
 #analog-clock--hours{
-	@apply bg-[#F06543];
-	height: min(10rem, 17vw);
+	@apply bg-[#F06543] h-[12vw] sm:h-20 lg:h-[7vw];
+	/*height: min(10rem, 13vw);*/
 }
 
 #analog-clock--seconds{
-	@apply h-24 w-1
+	@apply h-[22vw] w-1 sm:h-32
 }
 
 #analog-clock--dot{
 	@apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black z-2;
 	padding: 7px;
 	border-radius: 50%;
+}
+
+@media (max-width: 320px){
+	#digital-clock>p{
+		font-size: 10vw;
+	}
+
+	.toggle--options{
+		@apply text-sm
+	}
 }
