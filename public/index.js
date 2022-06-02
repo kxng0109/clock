@@ -80,27 +80,33 @@ const getColors = () =>{
 		case date.getHours() >= 20 || date.getHours() < 5:
 			container.style.background = '#03071E';
 			document.documentElement.classList.add('dark');
+			document.querySelector("meta[name='theme-color']").content = "#03071E";
 		break;
 		case date.getHours() >= 5 && date.getHours() < 6:
 			container.style.background = 'linear-gradient(135deg, #03071E,#303236)';
+			document.querySelector("meta[name='theme-color']").content = "#03071E";
 			document.documentElement.classList.add('dark');
 		break;
 		case date.getHours() >= 6 && date.getHours() < 7:
 			container.style.background = 'linear-gradient(135deg, #444850 , #573170)';
+			document.querySelector("meta[name='theme-color']").content = "#444850";
 			document.documentElement.classList.add('dark');
 		break;
 		case date.getHours() >= 7 && date.getHours() < 8:
 			container.style.background = 'linear-gradient(135deg, #804565 , #AA585B)';
+			document.querySelector("meta[name='theme-color']").content = "#804565";
 			document.documentElement.classList.add('dark');
 		break;
 		case date.getHours()  >= 8 && date.getHours() < 9:
 			container.style.background = 'linear-gradient(135deg, #D36C50 , #FD8046)';
+			document.querySelector("meta[name='theme-color']").content = "#D36C50";
 			document.documentElement.classList.add('dark');
 			analogClockMinute.style.background = '#4C2E05';
 			analogClockHours.style.background = '#7A8450';
 		break;
 		case date.getHours()  >= 9 && date.getHours() < 10:
 			container.style.background = 'linear-gradient(135deg, #D36C50 , #FD8046)';
+			document.querySelector("meta[name='theme-color']").content = "#D36C50";
 			document.documentElement.classList.add('dark');
 			analogClockMinute.style.background = '#4C2E05';
 			analogClockHours.style.background = '#7A8450';
@@ -108,6 +114,7 @@ const getColors = () =>{
 		break;
 		case date.getHours()  >= 10 && date.getHours() < 11:
 			container.style.background = 'linear-gradient(135deg,#FD8046, rgb(254 240 138))';
+			document.querySelector("meta[name='theme-color']").content = "#FD8046";
 			document.documentElement.classList.remove('dark');
 			analogClockMinute.style.background = '#4C2E05';
 			analogClockHours.style.background = '#7A8450';
@@ -115,34 +122,41 @@ const getColors = () =>{
 		break;
 		case date.getHours()  >= 11 && date.getHours() < 12:
 			container.style.background = 'linear-gradient(135deg, rgb(254 240 138), rgb(254 252 232))';
+			document.querySelector("meta[name='theme-color']").content = "rgb(254 240 138";
 			document.documentElement.classList.remove('dark');
 		break;
 		case date.getHours()  >= 12 && date.getHours() < 14:
 			container.style.background = 'linear-gradient(110deg, rgb(254 252 232), rgb(254 249 195))';
+			document.querySelector("meta[name='theme-color']").content = "rgb(254 252 232)";
 			document.documentElement.classList.remove('dark');
 		break;
 		case date.getHours()  >= 14 && date.getHours() < 16:
 			container.style.background = 'linear-gradient(110deg, rgb(254 249 195), #72a0c6)';
+			document.querySelector("meta[name='theme-color']").content = "rgb(254 249 195)";
 			document.documentElement.classList.remove('dark');
 		break;
 		case date.getHours()  >= 16 && date.getHours() < 17:
 			container.style.background = 'linear-gradient(135deg,  #F48C06, #E85D04)';
+			document.querySelector("meta[name='theme-color']").content = "#F48C06";
 			document.documentElement.classList.add('dark');
 			analogClockMinute.style.background = '#7005e2';
 			analogClockHours.style.background = '#05e2d7';
 		break;
 		case date.getHours()  >= 17 && date.getHours() < 18:
 			container.style.background = 'linear-gradient(135deg, #E85D04 , #DC2F02)';
+			document.querySelector("meta[name='theme-color']").content = "#E85D04";
 			document.documentElement.classList.add('dark');
 			analogClockMinute.style.background = '#7005e2';
 			analogClockHours.style.background = '#05e2d7';
 		break;
 		case date.getHours()  >= 18 && date.getHours() < 19:
 			container.style.background = 'linear-gradient(135deg, #DC2F02, #6A040F)';
+			document.querySelector("meta[name='theme-color']").content = "#DC2F02";
 			document.documentElement.classList.add('dark');
 		break;
 		case date.getHours()  >= 19 && date.getHours() < 20:
 			container.style.background = 'linear-gradient(135deg, #6A040F, #370617)';
+			document.querySelector("meta[name='theme-color']").content = "#6A040F";
 			document.documentElement.classList.add('dark');
 		break;
 	}
