@@ -565,6 +565,7 @@ html{
 }
 
 .toggle--options {
+  cursor: pointer;
   overflow-x: hidden;
   padding: 0.75rem;
   padding-top: 0.5rem;
