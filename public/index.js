@@ -64,21 +64,21 @@ toggleTwentyFour.onclick = () => {
 	isToggled = false;
 }
 
-const themeSelector = value =>{	
-	switch(true){
-		case digitalClockHours.textContent >= value:
-			// document.documentElement.classList.add('dark');
-			// container.classList.remove('evening');
-			document.documentElement.classList.remove('dark');
-			container.classList.remove('evening');
-		break;
+// const themeSelector = value =>{	
+// 	switch(true){
+// 		case digitalClockHours.textContent >= value:
+// 			// document.documentElement.classList.add('dark');
+// 			// container.classList.remove('evening');
+// 			document.documentElement.classList.remove('dark');
+// 			container.classList.remove('evening');
+// 		break;
 
-		// case digitalClockHours.textContent <= value:
-		// 	document.documentElement.classList.remove('dark');
-		// 	container.classList.add('evening');
-		// break;
-	}
-}
+// 		// case digitalClockHours.textContent <= value:
+// 		// 	document.documentElement.classList.remove('dark');
+// 		// 	container.classList.add('evening');
+// 		// break;
+// 	}
+// }
 
 setInterval(() =>{
 	date = new Date();
@@ -94,7 +94,7 @@ setInterval(() =>{
 					// digitalClockHours.textContent = (addZero(date.getHours()) - 12);
 					hourConverter(addZero(date.getHours()))
 					digitalClockHoursFormat.classList.remove('hidden');
-					themeSelector(8)
+					// themeSelector(8)
 				break;
 				//If 12 hours is selected and it is morning
 				case isToggled && digitalClockHoursFormat.textContent === 'AM':			
@@ -105,7 +105,7 @@ setInterval(() =>{
 				default:			
 					digitalClockHours.textContent = addZero(date.getHours());
 					digitalClockHoursFormat.classList.add('hidden');
-					themeSelector(20)
+					// themeSelector(20)
 				break;
 			}
 		break;
@@ -117,34 +117,96 @@ setInterval(() =>{
 		break;
 	}
 }, 1000)
-let temp = 20;
+// let temp = 20;
 
+// switch (true) {
+// 	case temp >= 20:
+// 		container.classList.add('dark:bg-black');
+// 		break;
+// 	case temp >= 3 && temp < 6:
+// 		container.classList.add('dark:from-black', 'dark:to-indigo-900');
+// 		container.classList.remove('dark:bg-black');
+// 	break;
+// 	case temp >= 6 && temp < 7:
+// 		container.classList.add('dark:from-indigo-900', 'dark:to-blue-700');
+// 		container.classList.remove('dark:from-black', 'dark:to-indigo-900');
+// 	break;
+// 	case temp >= 7 && temp < 8:
+// 		container.classList.add('dark:from-blue-700', 'dark:to-orange-500');
+// 		container.classList.remove('dark:from-blue-900', 'dark:to-blue-700');
+// 	break;
+// 	case temp >= 8 && temp < 9:
+// 		container.classList.add('from-orange-500', 'to-yellow-400');
+// 		container.classList.remove('dark:from-blue-500', 'dark:to-orange-500');
+// 	break;
+// 	case temp >= 9 && temp < 11:
+// 		container.classList.add('from-yellow-400', 'to-yellow-100');
+// 		container.classList.remove('dark:from-blue-500', 'dark:to-yellow-400');
+// 	break;
+// 	case temp >= 11 && temp < 16:
+// 		container.classList.add('from-yellow-100', 'to-blue-300');
+// 		container.classList.remove('from-yellow-500', 'to-yellow-100');
+// 	break;
+// }
+
+let temp = 7;
 switch (true) {
 	case temp >= 20:
-		container.classList.add('dark:bg-black');
-		break;
-	case temp >= 3 && temp < 6:
-		container.classList.add('dark:from-black', 'dark:to-indigo-900');
-		container.classList.remove('dark:bg-black');
+	container.style.background = '#03071E';
+	document.documentElement.classList.add('dark');
+	break;
+	case temp >= 5 && temp < 6:
+	container.style.background = 'linear-gradient(135deg, #03071E,#303236)';
+	document.documentElement.classList.add('dark');
 	break;
 	case temp >= 6 && temp < 7:
-		container.classList.add('dark:from-indigo-900', 'dark:to-blue-700');
-		container.classList.remove('dark:from-black', 'dark:to-indigo-900');
+	container.style.background = 'linear-gradient(135deg, #444850 , #573170)';
+	document.documentElement.classList.add('dark');
 	break;
 	case temp >= 7 && temp < 8:
-		container.classList.add('dark:from-blue-700', 'dark:to-orange-500');
-		container.classList.remove('dark:from-blue-900', 'dark:to-blue-700');
+	container.style.background = 'linear-gradient(135deg, #804565 , #AA585B)';
+	document.documentElement.classList.add('dark');
+	analogClockMinute.style.background = '#4C2E05';
+	analogClockHours.style.background = '#7A8450';
 	break;
-	case temp >= 8 && temp < 9:
-		container.classList.add('from-orange-500', 'to-yellow-400');
-		container.classList.remove('dark:from-blue-500', 'dark:to-orange-500');
+	case temp  >= 8 && temp < 9:
+	container.style.background = 'linear-gradient(135deg, #D36C50 , #FD8046)';
+	document.documentElement.classList.add('dark');
 	break;
-	case temp >= 9 && temp < 11:
-		container.classList.add('from-yellow-400', 'to-yellow-100');
-		container.classList.remove('dark:from-blue-500', 'dark:to-yellow-400');
+	case temp  >= 9 && temp < 10:
+	container.style.background = 'linear-gradient(135deg, #D36C50 , #FD8046)';
+	document.documentElement.classList.add('dark');
 	break;
-	case temp >= 11 && temp < 16:
-		container.classList.add('from-yellow-100', 'to-blue-300');
-		container.classList.remove('from-yellow-500', 'to-yellow-100');
+	case temp  >= 10 && temp < 11:
+	container.style.background = 'linear-gradient(135deg,#FD8046, rgb(254 240 138))';
+	document.documentElement.classList.remove('dark');
+	break;
+	case temp  >= 11 && temp < 12:
+	container.style.background = 'linear-gradient(135deg, rgb(254 240 138), rgb(254 252 232))';
+	document.documentElement.classList.remove('dark');
+	break;
+	case temp  >= 12 && temp < 14:
+	container.style.background = 'linear-gradient(110deg, rgb(254 252 232), rgb(254 249 195))';
+	document.documentElement.classList.remove('dark');
+	break;
+	case temp  >= 14 && temp < 16:
+	container.style.background = 'linear-gradient(110deg, rgb(254 249 195), #72a0c6)';
+	document.documentElement.classList.remove('dark');
+	break;
+	case temp  >= 16 && temp < 17:
+	container.style.background = 'linear-gradient(135deg,  #F48C06, #E85D04)';
+	document.documentElement.classList.add('dark');
+	break;
+	case temp  >= 17 && temp < 18:
+	container.style.background = 'linear-gradient(135deg, #E85D04 , #DC2F02)';
+	document.documentElement.classList.add('dark');
+	break;
+	case temp  >= 18 && temp < 19:
+	container.style.background = 'linear-gradient(135deg, #DC2F02, #6A040F)';
+	document.documentElement.classList.add('dark');
+	break;
+	case temp  >= 19 && temp < 20:
+	container.style.background = 'linear-gradient(135deg, #6A040F, #370617)';
+	document.documentElement.classList.add('dark');
 	break;
 }
