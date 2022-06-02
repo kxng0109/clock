@@ -26,7 +26,7 @@
 }
 
 .toggle--options{
-	@apply font-mali p-3 py-2 md:p-5 md:py-3;
+	@apply font-mali p-3 py-2 overflow-x-hidden md:p-5 md:py-3;
 }
 
 #clock-section{
