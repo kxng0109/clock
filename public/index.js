@@ -108,6 +108,7 @@ const getColors = () =>{
 			container.style.background = 'linear-gradient(135deg,  #F48C06, #E85D04)';
 			document.querySelector("meta[name='theme-color']").content = "#F48C06";
 			document.documentElement.classList.add('dark');
+			analogClockMarkings.forEach((element, index) => analogClockMarkings[index].style.background = 'rgb(29 78 216)');
 			analogClockMinute.style.background = '#7005e2';
 			analogClockHours.style.background = '#05e2d7';
 		break;
@@ -115,6 +116,7 @@ const getColors = () =>{
 			container.style.background = 'linear-gradient(135deg, #E85D04 , #DC2F02)';
 			document.querySelector("meta[name='theme-color']").content = "#E85D04";
 			document.documentElement.classList.add('dark');
+			analogClockMarkings.forEach((element, index) => analogClockMarkings[index].style.background = 'rgb(29 78 216)');
 			analogClockMinute.style.background = '#7005e2';
 			analogClockHours.style.background = '#05e2d7';
 		break;
@@ -122,6 +124,7 @@ const getColors = () =>{
 			container.style.background = 'linear-gradient(135deg, #DC2F02, #6A040F)';
 			document.querySelector("meta[name='theme-color']").content = "#DC2F02";
 			document.documentElement.classList.add('dark');
+			analogClockMarkings.forEach((element, index) => analogClockMarkings[index].style.background = 'rgb(29 78 216)');
 		break;
 		case date.getHours()  >= 19 && date.getHours() < 20:
 			container.style.background = 'linear-gradient(135deg, #6A040F, #370617)';
