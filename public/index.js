@@ -15,7 +15,7 @@ const digitalClockHoursFormat = document.querySelector('#digital-clock--hours-fo
 const analogClockHours = document.querySelector('#analog-clock--hours');
 const analogClockMinute = document.querySelector('#analog-clock--minute');
 const analogClockSecond = document.querySelector('#analog-clock--seconds');
-const analogClockMarkings = document.querySelector('.analog-clock--markings');
+const analogClockMarkings = document.querySelectorAll('.analog-clock--markings');
 const translateX = 'translateX(-50%)'
 let date = new Date();
 let is12HToggled;
@@ -24,7 +24,7 @@ let addZero = time => time <= 9 ? `0${time}` : time;
 const hourConverter = (hour, digitalOrAnalog = 'digital') =>{
 	switch (true) {
 		case digitalOrAnalog == 'digital' && digitalClockHoursFormat.textContent === 'PM':
-			return digitalClockHours.textContent = (hour - 12);
+			return digitalClockHours.textContent = hour == 12 ? hour : (hour - 12);
 		break;
 		case digitalOrAnalog == 'digital' && digitalClockHoursFormat.textContent === 'AM':
 			return digitalClockHours.textContent = hour;
@@ -43,37 +43,6 @@ let toggler = (changeElement, otherElement) =>{
 	changeElement.classList.add('selected');
 	otherElement.classList.remove('selected');
 }
-
-toggleDigital.onclick = () => {
-	toggler(toggleDigital, toggleAnalog);
-	hoursFormat.style.display = 'flex';
-	digitalClock.style.display = 'flex';
-	analogClock.style.display = 'none';
-	localStorageSetter('digital', 'analog');
-}
-
-toggleAnalog.onclick = () => {
-	toggler(toggleAnalog, toggleDigital);
-	hoursFormat.style.display = 'none';
-	digitalClock.style.display = 'none';
-	analogClock.style.display = 'flex';
-	localStorageSetter('analog', 'digital');
-}
-
-localStorage.getItem('analog') ? toggleAnalog.onclick() : toggleDigital.onclick();
-
-toggleTwelveHours.onclick = () => {
-	toggler(toggleTwelveHours, toggleTwentyFour);
-	is12HToggled = true;
-	localStorageSetter('twelveHour', 'twentyFourHour');
-}
-
-toggleTwentyFour.onclick = () => {
-	toggler(toggleTwentyFour, toggleTwelveHours);
-	is12HToggled = false;
-	localStorageSetter('twelveHour', 'twentyFourHour');
-}
-localStorage.getItem('twentyFourHour') ? toggleTwentyFour.onclick() : toggleTwelveHours.onclick();
 
 const getColors = () =>{
 	switch (true) {
@@ -110,7 +79,7 @@ const getColors = () =>{
 			document.documentElement.classList.add('dark');
 			analogClockMinute.style.background = '#4C2E05';
 			analogClockHours.style.background = '#7A8450';
-			analogClockMarkings.forEach((element, index) => analogClockMarkings.style.background = 'rgb(29 78 216)');
+			analogClockMarkings.forEach((element, index) => analogClockMarkings[index].style.background = 'rgb(29 78 216)');
 		break;
 		case date.getHours()  >= 10 && date.getHours() < 11:
 			container.style.background = 'linear-gradient(135deg,#FD8046, rgb(254 240 138))';
@@ -118,7 +87,7 @@ const getColors = () =>{
 			document.documentElement.classList.remove('dark');
 			analogClockMinute.style.background = '#4C2E05';
 			analogClockHours.style.background = '#7A8450';
-			analogClockMarkings.forEach((element, index) => analogClockMarkings.style.background = 'rgb(29 78 216)');
+			analogClockMarkings.forEach((element, index) => analogClockMarkings[index].style.background = 'rgb(29 78 216)');
 		break;
 		case date.getHours()  >= 11 && date.getHours() < 12:
 			container.style.background = 'linear-gradient(135deg, rgb(254 240 138), rgb(254 252 232))';
@@ -163,7 +132,7 @@ const getColors = () =>{
 }
 getColors();
 
-setInterval(() =>{
+const theMain = () =>{
 	date = new Date();
 	digitalClockMinute.textContent = addZero(date.getMinutes());
 	digitalClockSecond.textContent = addZero(date.getSeconds());
@@ -198,4 +167,37 @@ setInterval(() =>{
 			analogClockHours.style.transform = `rotate(${hourConverter(date.getHours()) * 30 + (addZero(date.getMinutes()) * 0.5)}deg) ${translateX}`;
 		break;
 	}
-}, 1000)
+};
+
+setInterval(() => theMain(), 500)//Not sure whether I should make it 100, but I'm worried about low-tier devices
+
+toggleDigital.onclick = () => {
+	toggler(toggleDigital, toggleAnalog);
+	hoursFormat.style.display = 'flex';
+	digitalClock.style.display = 'flex';
+	analogClock.style.display = 'none';
+	localStorageSetter('digital', 'analog');
+}
+
+toggleAnalog.onclick = () => {
+	toggler(toggleAnalog, toggleDigital);
+	hoursFormat.style.display = 'none';
+	digitalClock.style.display = 'none';
+	analogClock.style.display = 'flex';
+	localStorageSetter('analog', 'digital');
+}
+
+localStorage.getItem('analog') ? toggleAnalog.onclick() : toggleDigital.onclick();
+
+toggleTwelveHours.onclick = () => {
+	toggler(toggleTwelveHours, toggleTwentyFour);
+	is12HToggled = true;
+	localStorageSetter('twelveHour', 'twentyFourHour');
+}
+
+toggleTwentyFour.onclick = () => {
+	toggler(toggleTwentyFour, toggleTwelveHours);
+	is12HToggled = false;
+	localStorageSetter('twentyFourHour', 'twelveHour');
+}
+localStorage.getItem('twentyFourHour') ? toggleTwentyFour.onclick() : toggleTwelveHours.onclick();

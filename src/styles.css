@@ -56,11 +56,11 @@
 }
 
 #acm1, #acm3{
-	@apply top-0 h-4 -translate-x-1/2 
+	@apply top-0 h-4 -translate-x-1/2 lg:h-6;
 }
 
 #acm2, #acm4{
-	@apply right-0 w-4 h-1 -translate-y-1/2 
+	@apply right-0 w-4 h-1 -translate-y-1/2 lg:w-6;
 }
 
 #acm3{
